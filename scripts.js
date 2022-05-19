@@ -9,14 +9,17 @@ let statisticAverageTime = 0;
 let isClickAreaClicked = false;
 let startTime;
 let clickedTimes;
+let amountOfClicks = 5;
 
 function runningButtonClicked() {
     let button = document.querySelector("button.runningButton");
     let currentText = button.innerText;
+
     if (currentText === "START") {
         button.innerText = "STOP";
         button.style.background = "rgb(255, 0, 0)";
         button.style.borderColor = "rgb(255, 0, 0)";
+        setAmountOfClicksIfPossible();
         relaxMeterRun();
         startClock();
         resetStatistics();
@@ -28,9 +31,18 @@ function runningButtonClicked() {
     }
 }
 
+function setAmountOfClicksIfPossible() {
+    let attemps = document.querySelector("input.attemps");
+    let value = parseInt(attemps.value);
+    if (!Number.isNaN(value) && value > 0) {
+        amountOfClicks = value;
+    } else {
+        amountOfClicks = 5
+        attemps.value = 5;
+    }
+}
 
 function relaxMeterRun() {
-    let amountOfClicks = 5;
     let clickArea = document.querySelector("div.clickArea");
     let colors = ["rgb(45, 137, 217)", "rgb(154, 45, 217)", "rgb(200, 217, 45)"];
 
