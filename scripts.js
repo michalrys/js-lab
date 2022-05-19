@@ -1,18 +1,8 @@
 // my scripts
 // taken from other example
 let div = document.createElement('div');
-
-function removeBoringStuff() {
-    document.querySelectorAll("#app .boring").forEach((e) => e.remove());
-}
-
-function readValues() {
-    const isCheckboxChecked = document.getElementById('myCheckbox').checked
-    if (isCheckboxChecked === true) {
-        const textFieldValue = document.getElementById('myTextField').value
-        alert(textFieldValue)
-    }
-}
+let clicks = 0;
+let interval;
 
 
 function runningButtonClicked() {
@@ -27,6 +17,7 @@ function runningButtonClicked() {
         button.innerText = "START";
         button.style.background = "rgb(66, 255, 12)";
         button.style.borderColor = "rgb(66, 255, 12)";
+        relaxMeterStop();
     }
 }
 
@@ -37,15 +28,14 @@ function relaxMeterRun() {
     let colors = ["rgb(45, 137, 217)", "rgb(154, 45, 217)", "rgb(200, 217, 45)"];
 
     let i = 1;
-    let time = Math.random() * 4000 + (-1) ^ i * 500;
-    // var time = 1000 * i;
-    let interval = setInterval(() => {
+    let time = Math.random() * 2000 + (-1) ^ i * 500;
+    interval = setInterval(() => {
         clickArea.style.backgroundColor = colors[i % colors.length];
         console.log("i = " + i + " color = " + colors[i % colors.length] + " time: " + time);
         i++;
-        time = Math.random() * 4000 + (-1) ^ i * 500;
+        time = Math.random() * 3000 + (-1) ^ i * 500;
         if (i > amountOfClicks) {
-            clearInterval(interval);
+            relaxMeterStop();
             runningButtonClicked();
         }
     }, time);
@@ -54,8 +44,9 @@ function relaxMeterRun() {
     document.querySelector("div.statistics").style.visibility = "visible";
 }
 
-
-
+function relaxMeterStop() {
+    clearInterval(interval);
+}
 
 
 function clickOnClickArea() {
@@ -65,15 +56,9 @@ function clickOnClickArea() {
         // so START was pressed
         console.log("Clicked !");
     }
-
-}
-
-
-function sleep(milliseconds) {
-    const date = Date.now();
-    let currentDate = null;
-    do {
-        currentDate = Date.now();
-    } while (currentDate - date < milliseconds);
+    console.log("Clicked !");
+    clicks++;
+    var liBestTime = document.querySelector("li.timeBest");
+    liBestTime.innerText = "Clicks: " + clicks; //FOR TEST ONLY
 }
 
