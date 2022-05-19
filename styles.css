@@ -35,13 +35,13 @@ span.clickAreaInfo {
     color: rgb(85, 171, 239);
 }
 
-button.start {
+button.runningButton {
     background: rgb(66, 255, 12);
     border-color: rgb(66, 255, 12);
     border-radius: 20px;
     width: 80px;
     height: 40px;
-    margin-right: 25px;
+    /*margin-right: 25px;*/
 }
 
 button.stop {
@@ -53,6 +53,7 @@ button.stop {
 }
 
 div.statistics {
+    /*display: none;*/
     background: rgb(212, 255, 200);
     border-radius: 20px;
     margin: auto;
@@ -69,15 +70,15 @@ li {
 }
 
 li.timeBest {
-
+    /*display: none;*/
 }
 
 li.timeWorst {
-
+    /*display: none;*/
 }
 
 li.timeAverage {
-
+    /*display: none;*/
 }
 
 @media (max-width: 730px) {
