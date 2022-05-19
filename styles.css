@@ -53,7 +53,7 @@ button.stop {
 }
 
 div.statistics {
-    /*display: none;*/
+    visibility: hidden;
     background: rgb(212, 255, 200);
     border-radius: 20px;
     margin: auto;
@@ -70,15 +70,15 @@ li {
 }
 
 li.timeBest {
-    /*display: none;*/
+
 }
 
 li.timeWorst {
-    /*display: none;*/
+
 }
 
 li.timeAverage {
-    /*display: none;*/
+
 }
 
 @media (max-width: 730px) {

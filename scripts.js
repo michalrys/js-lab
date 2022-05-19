@@ -21,16 +21,17 @@ function runningButtonClicked() {
         button.innerText = "STOP";
         button.style.background = "rgb(255, 0, 0)";
         button.style.borderColor = "rgb(255, 0, 0)";
+        relaxMeterRun();
     } else {
         button.innerText = "START";
         button.style.background = "rgb(66, 255, 12)";
         button.style.borderColor = "rgb(66, 255, 12)";
     }
 }
-function runStop() {
-    let buttonStop = document.querySelector("button.stop");
-    let buttonStart = document.querySelector("button.start");
-    buttonStart.style.display = "";
-    buttonStop.style.display = "none";
+function relaxMeterRun() {
+
+    // after first click turn on statistics
+    document.querySelector("div.statistics").style.visibility = "visible";
+
 }
 
