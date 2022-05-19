@@ -4,6 +4,7 @@ let div = document.createElement('div');
 let clicks = 0;
 let interval;
 let statisticBestTime = 0;
+let statisticBestTimeForAllAttempts = "-";
 let statisticWorstTime = 0;
 let statisticAverageTime = 0;
 let isClickAreaClicked = false;
@@ -32,7 +33,7 @@ function runningButtonClicked() {
 }
 
 function setAmountOfClicksIfPossible() {
-    let attemps = document.querySelector("input.attemps");
+    let attemps = document.querySelector("input.attempts");
     let value = parseInt(attemps.value);
     if (!Number.isNaN(value) && value > 0) {
         amountOfClicks = value;
@@ -115,11 +116,16 @@ function stopClock() {
     if (clickedTimes.length >= 2) {
         statisticAverageTime = (clickedTimes.reduce((a, b) => a + b, 0) / clickedTimes.length)
     }
+    if (statisticBestTimeForAllAttempts === "-" || statisticBestTimeForAllAttempts > statisticBestTime) {
+        statisticBestTimeForAllAttempts = statisticBestTime;
+    }
 
+    var bestTimeAll = document.querySelector("li.timeBestForAllAttempts");
     var best = document.querySelector("li.timeBest");
     var worst = document.querySelector("li.timeWorst");
     var average = document.querySelector("li.timeAverage");
 
+    bestTimeAll.innerText = "Best time for all attempts: " + statisticBestTimeForAllAttempts + " msec"; //FOR TEST ONLY
     best.innerText = "Best time: " + statisticBestTime + " msec"; //FOR TEST ONLY
     worst.innerText = "Worst time: " + statisticWorstTime + " msec"; //FOR TEST ONLY
     average.innerText = "Average time: " + statisticAverageTime + " msec"; //FOR TEST ONLY
